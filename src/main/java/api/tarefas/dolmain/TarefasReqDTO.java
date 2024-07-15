@@ -6,10 +6,12 @@ public record TarefasReqDTO(
 
     Long id,
 
+    String name,
+
     String description,
 
     Date dateConclusion,
 
-    Boolean status) {
-
-}
+    Boolean status,
+    
+    Priority priority ) {}

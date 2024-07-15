@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import api.tarefas.dolmain.Tarefas;
@@ -34,17 +35,30 @@ public class TarefasService {
         var task = repository.findById(data.id());
         Tarefas tarefa = task.get();
 
+        if (data.name() != null) {
+            tarefa.setName(data.name());;    
+        }
         if (data.description() != null) {
             tarefa.setDescription(data.description());    
         }
-        
         if (data.dateConclusion() != null) {
             tarefa.setDateConclusion(data.dateConclusion());    
         }
         if (data.status() != null) {
             tarefa.setStatus(data.status());    
         }
-        
+        if (data.priority() != null) {
+            tarefa.setPriority(data.priority());    
+        }
         return repository.save(tarefa);
+    }
+
+    public List<Tarefas> listarByPriority(){
+        return repository.findAllOrderByPriority();
+    }
+
+    public void deleteTask(TarefasReqDTO data){
+        var taskDelete = repository.findById(data.id()).get();
+        repository.delete(taskDelete);
     }
 }

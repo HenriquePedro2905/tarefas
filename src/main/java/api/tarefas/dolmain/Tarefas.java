@@ -4,6 +4,8 @@ import java.util.Date;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -25,18 +27,25 @@ public class Tarefas {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    private String name;
+
     private String description;
 
     @Column(name = "date_conclusion")
     private Date dateConclusion;
 
     private Boolean status;
+    
+    @Enumerated(EnumType.STRING)
+    private Priority priority;
 
 
     public Tarefas(TarefasReqDTO dt) {
-        this.id = dt.id();
+        // this.id = dt.id();
+        this.name = dt.name();
         this.description = dt.description();
         this.dateConclusion = dt.dateConclusion();
         this.status = dt.status();
+        this.priority = dt.priority();
     }
 }
