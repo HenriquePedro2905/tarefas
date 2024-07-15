@@ -2,6 +2,7 @@ package api.tarefas.dolmain;
 
 import java.util.Date;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -24,15 +25,16 @@ public class Tarefas {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
 
-    String descrition;
+    String description;
 
+    @Column(name = "date_conclusion")
     Date dateConclusion;
 
     Boolean status;
 
 
     public Tarefas(TarefasReqDTO dt) {
-        this.descrition = dt.descrition();
+        this.description = dt.description();
         this.dateConclusion = dt.dateConclusion();
         this.status = dt.status();
     }

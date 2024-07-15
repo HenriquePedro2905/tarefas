@@ -4,7 +4,7 @@ import java.util.Date;
 
 public record TarefasReqDTO(
 
-    String descrition,
+    String description,
 
     Date dateConclusion,
 
