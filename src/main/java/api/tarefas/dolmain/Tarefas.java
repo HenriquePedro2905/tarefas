@@ -23,20 +23,20 @@ public class Tarefas {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    long id;
+    private long id;
 
-    String description;
+    private String description;
 
     @Column(name = "date_conclusion")
-    Date dateConclusion;
+    private Date dateConclusion;
 
-    Boolean status;
+    private Boolean status;
 
 
     public Tarefas(TarefasReqDTO dt) {
+        this.id = dt.id();
         this.description = dt.description();
         this.dateConclusion = dt.dateConclusion();
         this.status = dt.status();
     }
-
 }
