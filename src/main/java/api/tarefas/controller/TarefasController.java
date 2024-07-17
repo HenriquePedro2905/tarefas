@@ -11,10 +11,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import api.tarefas.dolmain.TarefasReqDTO;
+import api.tarefas.dolmain.TarefasReqUpdDTO;
 import api.tarefas.service.TarefasService;
 import lombok.var;
 
-@CrossOrigin(origins = "https://front-tarefas-eosin.vercel.app/")
+@CrossOrigin(origins = "*")
+// @CrossOrigin(origins = "http://127.0.0.1:5500")1
 @RestController
 @RequestMapping("/task")
 public class TarefasController {
@@ -28,7 +30,7 @@ public class TarefasController {
         return ResponseEntity.status(201).build();
     }
 
-    @GetMapping("/listar")
+    @GetMapping("/listAll")
     public ResponseEntity listTasks(){
         var allTask = service.listarALL();
         return ResponseEntity.ok(allTask);
@@ -43,6 +45,12 @@ public class TarefasController {
     @PostMapping("/update")
     public ResponseEntity<Void> updateTask(@RequestBody TarefasReqDTO data){
         service.updateTask(data);
+        return ResponseEntity.ok().build();
+    }
+    
+    @PostMapping("/updateStatus")
+    public ResponseEntity<Void> updateTask(@RequestBody TarefasReqUpdDTO data){
+        service.updateStatus(data);
         return ResponseEntity.ok().build();
     }
 

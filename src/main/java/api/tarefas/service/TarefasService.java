@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import api.tarefas.dolmain.Tarefas;
 import api.tarefas.dolmain.TarefasRepository;
 import api.tarefas.dolmain.TarefasReqDTO;
+import api.tarefas.dolmain.TarefasReqUpdDTO;
 import lombok.var;
 
 @Service
@@ -50,6 +51,17 @@ public class TarefasService {
         if (data.priority() != null) {
             tarefa.setPriority(data.priority());    
         }
+        return repository.save(tarefa);
+    }
+
+    public Tarefas updateStatus(TarefasReqUpdDTO data){
+        var task = repository.findById(data.id());
+        Tarefas tarefa = task.get();
+
+        if (data.status() != null) {
+            tarefa.setStatus(data.status());    
+        }
+
         return repository.save(tarefa);
     }
 
