@@ -15,7 +15,7 @@ import api.tarefas.dolmain.TarefasReqUpdDTO;
 import api.tarefas.service.TarefasService;
 import lombok.var;
 
-@CrossOrigin(origins = "*")
+// @CrossOrigin(origins = "*")
 // @CrossOrigin(origins = "http://127.0.0.1:5500")1
 @RestController
 @RequestMapping("/task")
