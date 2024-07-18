@@ -2,6 +2,7 @@ package api.tarefas.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,8 +16,6 @@ import api.tarefas.dolmain.TarefasReqUpdDTO;
 import api.tarefas.service.TarefasService;
 import lombok.var;
 
-// @CrossOrigin(origins = "*")
-// @CrossOrigin(origins = "http://127.0.0.1:5500")1
 @RestController
 @RequestMapping("/task")
 public class TarefasController {
@@ -26,7 +25,8 @@ public class TarefasController {
 
     @PostMapping
     public ResponseEntity<Void> registerTask(@RequestBody TarefasReqDTO data){
-        service.crationTask(data);
+        System.out.println(data.dateConclusion());
+        service.creationTask(data);
         return ResponseEntity.status(201).build();
     }
 

@@ -1,7 +1,11 @@
 package api.tarefas.dolmain;
 
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
+import api.tarefas.service.TarefasService;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -32,7 +36,7 @@ public class Tarefas {
     private String description;
 
     @Column(name = "date_conclusion")
-    private Date dateConclusion;
+    private LocalDate dateConclusion;
 
     private Boolean status;
     
@@ -41,11 +45,11 @@ public class Tarefas {
 
 
     public Tarefas(TarefasReqDTO dt) {
-        // this.id = dt.id();
         this.name = dt.name();
         this.description = dt.description();
         this.dateConclusion = dt.dateConclusion();
         this.status = dt.status();
         this.priority = dt.priority();
     }
+
 }

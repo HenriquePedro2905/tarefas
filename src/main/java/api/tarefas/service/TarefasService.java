@@ -1,10 +1,11 @@
 package api.tarefas.service;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import api.tarefas.dolmain.Tarefas;
@@ -19,7 +20,9 @@ public class TarefasService {
     @Autowired
     private TarefasRepository repository;
 
-    public Tarefas crationTask(TarefasReqDTO data) {
+    public Tarefas creationTask(TarefasReqDTO data) {
+        // String dateConclusionStr = data.dateConclusion();
+        // LocalDate date = conversionDate(dateConclusionStr);
         Tarefas newTask = new Tarefas(data);
         return repository.save(newTask);
     }
@@ -72,5 +75,10 @@ public class TarefasService {
     public void deleteTask(TarefasReqDTO data){
         var taskDelete = repository.findById(data.id()).get();
         repository.delete(taskDelete);
+    }
+
+    public LocalDate conversionDate(String dateIsso){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        return LocalDate.parse(dateIsso, formatter);
     }
 }

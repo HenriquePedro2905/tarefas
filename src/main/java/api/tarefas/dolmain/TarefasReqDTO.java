@@ -1,6 +1,6 @@
 package api.tarefas.dolmain;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public record TarefasReqDTO(
 
@@ -10,7 +10,7 @@ public record TarefasReqDTO(
 
     String description,
 
-    Date dateConclusion,
+    LocalDate dateConclusion,
 
     Boolean status,
     
