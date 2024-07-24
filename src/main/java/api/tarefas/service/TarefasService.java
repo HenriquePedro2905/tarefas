@@ -2,16 +2,17 @@ package api.tarefas.service;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import api.tarefas.dolmain.Tarefas;
-import api.tarefas.dolmain.TarefasRepository;
-import api.tarefas.dolmain.TarefasReqDTO;
-import api.tarefas.dolmain.TarefasReqUpdDTO;
+import api.tarefas.dolmain.tarefas.Tarefas;
+import api.tarefas.dolmain.tarefas.TarefasRepository;
+import api.tarefas.dolmain.tarefas.TarefasReqDTO;
+import api.tarefas.dolmain.tarefas.TarefasReqUpdDTO;
 import lombok.var;
 
 @Service
@@ -21,8 +22,6 @@ public class TarefasService {
     private TarefasRepository repository;
 
     public Tarefas creationTask(TarefasReqDTO data) {
-        // String dateConclusionStr = data.dateConclusion();
-        // LocalDate date = conversionDate(dateConclusionStr);
         Tarefas newTask = new Tarefas(data);
         return repository.save(newTask);
     }
@@ -31,6 +30,10 @@ public class TarefasService {
         return repository.findAll();
     }
 
+    public List<Tarefas> listarByCompletd(){
+        return repository.findByCompleted();
+    }
+    
     public Optional<Tarefas> listarById(Long id){
         return repository.findById(id);
     }
@@ -72,9 +75,16 @@ public class TarefasService {
         return repository.findAllOrderByPriority();
     }
 
-    public void deleteTask(TarefasReqDTO data){
-        var taskDelete = repository.findById(data.id()).get();
+    public void deleteTask(Long id){
+        var taskDelete = repository.findById(id).get();
         repository.delete(taskDelete);
+    }
+
+    public void deleteCompletedTask(){
+        List<Tarefas> tarefa = new ArrayList<>(listarByCompletd());
+        for(Tarefas tarefas : tarefa){
+            repository.deleteById(tarefas.getId());
+        }
     }
 
     public LocalDate conversionDate(String dateIsso){

@@ -1,4 +1,5 @@
-package api.tarefas.dolmain;
+package api.tarefas.dolmain.tarefas;
+
 
 public enum Priority {
     ALTA,

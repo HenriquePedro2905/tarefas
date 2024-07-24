@@ -1,11 +1,6 @@
-package api.tarefas.dolmain;
+package api.tarefas.dolmain.tarefas;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-
-import org.springframework.beans.factory.annotation.Autowired;
-
-import api.tarefas.service.TarefasService;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -29,7 +24,10 @@ public class Tarefas {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    
     private long id;
+
+    private Integer userId;
 
     private String name;
 

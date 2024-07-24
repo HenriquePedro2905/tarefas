@@ -1,4 +1,4 @@
-package api.tarefas.dolmain;
+package api.tarefas.dolmain.tarefas;
 
 
 public record TarefasReqUpdDTO(
