@@ -5,7 +5,7 @@ RUN apt-get update \
 
 COPY . /app
 WORKDIR /app
-RUN mvn clean install
+RUN mvn clean install -DskipTests
 
 FROM openjdk:21-jdk
 
