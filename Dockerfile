@@ -1,4 +1,7 @@
-FROM maven:3.9.1-openjdk-22 AS build
+FROM openjdk:22-jdk AS build
+
+RUN apt-get update \
+    && apt-get install -y maven
 
 COPY . /app
 WORKDIR /app
