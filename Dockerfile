@@ -1,6 +1,4 @@
-FROM openjdk:22-jdk AS build
-
-RUN apt-get update && apt-get install -y maven
+FROM maven:3.9.0-openjdk-22 AS build
 
 WORKDIR /app
 
