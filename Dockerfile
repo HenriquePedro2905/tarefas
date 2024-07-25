@@ -1,6 +1,9 @@
 FROM ubuntu:latest AS build
 
 RUN apt-get update \
+    && apt-get install -y software-properties-common \
+    && add-apt-repository ppa:openjdk-r/ppa \
+    && apt-get update \
     && apt-get install -y openjdk-22-jdk maven
 
 COPY . /app
@@ -8,7 +11,6 @@ WORKDIR /app
 
 RUN mvn clean install
 
-# Etapa final
 FROM openjdk:22-jdk
 
 EXPOSE 8080
