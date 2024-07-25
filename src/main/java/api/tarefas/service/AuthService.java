@@ -7,6 +7,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import api.tarefas.dolmain.users.AuthenticationDTO;
+import api.tarefas.dolmain.users.LoginResDTO;
 import api.tarefas.dolmain.users.UserRepository;
 import api.tarefas.dolmain.users.Users;
 import api.tarefas.dolmain.users.UsersReqDTO;
@@ -23,6 +24,7 @@ public class AuthService {
     @Autowired
     private TokenService service;
 
+
     public Users registerUser(UsersReqDTO data){
 
         String encryptedPassword = new BCryptPasswordEncoder().encode(data.password());
@@ -31,13 +33,14 @@ public class AuthService {
         return repository.save(newUser);
     }
 
-    public String login(AuthenticationDTO data){
+    public LoginResDTO login(AuthenticationDTO data){
         var usernamePassword = new UsernamePasswordAuthenticationToken(data.login(), data.password());
         var auth = this.authenticationManager.authenticate(usernamePassword);
 
         String token = service.generateToken((Users) auth.getPrincipal());
-
-        return token;
+        
+        Long userId = ((Users) auth.getPrincipal()).getId();
+        return new LoginResDTO(token, userId); 
     }
 }
 

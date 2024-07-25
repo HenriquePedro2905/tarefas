@@ -12,7 +12,7 @@ import api.tarefas.dolmain.users.Users;
 @Service
 public class TokenService {
 
-    private String secret;
+    private String secret = "teste";
 
     public String generateToken(Users users){
         try {

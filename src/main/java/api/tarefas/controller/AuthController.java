@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import api.tarefas.dolmain.users.AuthenticationDTO;
+import api.tarefas.dolmain.users.LoginResDTO;
 import api.tarefas.dolmain.users.UsersReqDTO;
 import api.tarefas.service.AuthService;
 
@@ -25,8 +26,8 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody AuthenticationDTO data){
-        var token = service.login(data);
-        return ResponseEntity.ok(token);
+    public ResponseEntity<LoginResDTO> login(@RequestBody AuthenticationDTO data){
+        var response = service.login(data);
+        return ResponseEntity.ok(response);
     }
 }

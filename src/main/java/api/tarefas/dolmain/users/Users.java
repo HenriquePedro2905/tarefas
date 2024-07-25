@@ -1,6 +1,8 @@
 package api.tarefas.dolmain.users;
 
 import java.util.Collection;
+import java.util.Collections;
+
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -26,11 +28,12 @@ public class Users implements UserDetails{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
+    private String name;
+
     private String login;
 
     private String password;
 
-    private String name;
 
 
     public Users(String login, String password, String name){
@@ -42,8 +45,7 @@ public class Users implements UserDetails{
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getAuthorities'");
+        return Collections.emptyList();
     }
 
 
@@ -55,8 +57,7 @@ public class Users implements UserDetails{
 
     @Override
     public String getUsername() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getUsername'");
+        return this.login;
     }
 
 }

@@ -32,9 +32,9 @@ public class TarefasController {
         return ResponseEntity.status(201).build();
     }
 
-    @GetMapping("/listAll")
-    public ResponseEntity listTasks(){
-        var allTask = service.listarALL();
+    @GetMapping("/listAll/{userId}")
+    public ResponseEntity listTasks(@PathVariable Integer userId){
+        var allTask = service.listarALL(userId);
         return ResponseEntity.ok(allTask);
     }
 
@@ -44,8 +44,8 @@ public class TarefasController {
         return ResponseEntity.ok(taskByid);
     }
 
-    @GetMapping("/listByCompleted")
-    public ResponseEntity listTasksById(){
+    @GetMapping("/listByCompleted/{userId}")
+    public ResponseEntity listTasksByCompleted(@PathVariable Integer userId){
         var taskByCompleted = service.listarByCompletd();
         return ResponseEntity.ok(taskByCompleted);
     }
@@ -62,9 +62,9 @@ public class TarefasController {
         return ResponseEntity.ok().build();
     }
 
-    @GetMapping("/listarByPriority")
-    public ResponseEntity listTasksByPriority(){
-        var tasksByPriority = service.listarByPriority();
+    @GetMapping("/listarByPriority/{userId}")
+    public ResponseEntity listTasksByPriority(@PathVariable Integer userId){
+        var tasksByPriority = service.listarByPriority(userId);
         return ResponseEntity.ok(tasksByPriority);
     }
 

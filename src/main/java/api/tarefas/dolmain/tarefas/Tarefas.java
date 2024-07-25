@@ -27,7 +27,8 @@ public class Tarefas {
     
     private long id;
 
-    private Integer userId;
+    @Column(name = "users_id")
+    private Long userId;
 
     private String name;
 
@@ -40,6 +41,7 @@ public class Tarefas {
     
     @Enumerated(EnumType.STRING)
     private Priority priority;
+    
 
 
     public Tarefas(TarefasReqDTO dt) {

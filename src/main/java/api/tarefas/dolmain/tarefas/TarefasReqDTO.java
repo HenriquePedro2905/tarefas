@@ -7,6 +7,8 @@ public record TarefasReqDTO(
 
     Long id,
 
+    Integer userId,
+
     String name,
 
     String description,
