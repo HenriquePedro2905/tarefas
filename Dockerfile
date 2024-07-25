@@ -1,4 +1,11 @@
-FROM maven:3.9.0-openjdk-22 AS build
+FROM openjdk:22-jdk AS build
+
+RUN apt-get update && \
+    apt-get install -y wget unzip && \
+    wget https://downloads.apache.org/maven/maven-3/3.9.0/binaries/apache-maven-3.9.0-bin.zip && \
+    unzip apache-maven-3.9.0-bin.zip -d /opt && \
+    ln -s /opt/apache-maven-3.9.0 /opt/maven && \
+    ln -s /opt/maven/bin/mvn /usr/bin/mvn
 
 WORKDIR /app
 
