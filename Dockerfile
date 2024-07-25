@@ -1,7 +1,9 @@
-FROM openjdk:22-jdk AS build
+FROM debian:bullseye AS build
 
 RUN apt-get update \
-    && apt-get install -y maven
+    && apt-get install -y \
+        openjdk-22-jdk \
+        maven
 
 COPY . /app
 WORKDIR /app
