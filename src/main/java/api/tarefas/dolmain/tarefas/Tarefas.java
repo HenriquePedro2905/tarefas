@@ -1,7 +1,6 @@
-package api.tarefas.dolmain;
+package api.tarefas.dolmain.tarefas;
 
-import java.util.Date;
-
+import java.time.LocalDate;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -25,27 +24,32 @@ public class Tarefas {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    
     private long id;
+
+    @Column(name = "users_id")
+    private Long userId;
 
     private String name;
 
     private String description;
 
     @Column(name = "date_conclusion")
-    private Date dateConclusion;
+    private LocalDate dateConclusion;
 
     private Boolean status;
     
     @Enumerated(EnumType.STRING)
     private Priority priority;
+    
 
 
     public Tarefas(TarefasReqDTO dt) {
-        // this.id = dt.id();
         this.name = dt.name();
         this.description = dt.description();
         this.dateConclusion = dt.dateConclusion();
         this.status = dt.status();
         this.priority = dt.priority();
     }
+
 }

@@ -1,16 +1,19 @@
-package api.tarefas.dolmain;
+package api.tarefas.dolmain.tarefas;
 
-import java.util.Date;
+
+import java.time.LocalDate;
 
 public record TarefasReqDTO(
 
     Long id,
 
+    Integer userId,
+
     String name,
 
     String description,
 
-    Date dateConclusion,
+    LocalDate dateConclusion,
 
     Boolean status,
     
