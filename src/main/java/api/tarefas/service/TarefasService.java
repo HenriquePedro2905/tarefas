@@ -15,8 +15,6 @@ import api.tarefas.dolmain.tarefas.TarefasRepository;
 import api.tarefas.dolmain.tarefas.TarefasReqDTO;
 import api.tarefas.dolmain.tarefas.TarefasReqUpdDTO;
 import api.tarefas.dolmain.users.Users;
-import lombok.var;
-
 @Service
 public class TarefasService {
 

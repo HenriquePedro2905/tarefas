@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 import api.tarefas.dolmain.tarefas.TarefasReqDTO;
 import api.tarefas.dolmain.tarefas.TarefasReqUpdDTO;
 import api.tarefas.service.TarefasService;
-import lombok.var;
 
 @RestController
 @RequestMapping("/task")
