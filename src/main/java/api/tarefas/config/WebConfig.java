@@ -13,7 +13,7 @@ public class WebConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
-                        .allowedOrigins("http://127.0.0.1:5500", "https://front-tarefas-git-master-pedro-henriques-projects-38461c5c.vercel.app", "https://tarefas-9ku0.onrender.com")
+                        .allowedOrigins("127.0.0.1:5500", "https://front-tarefas-git-master-pedro-henriques-projects-38461c5c.vercel.app", "https://tarefas-9ku0.onrender.com")
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                         .allowedHeaders("*")
                         .allowCredentials(true);
