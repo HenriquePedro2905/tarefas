@@ -1,10 +1,4 @@
-FROM ubuntu:latest AS build
-
-RUN apt-get update \
-    && apt-get install -y software-properties-common \
-    && add-apt-repository ppa:openjdk-r/ppa \
-    && apt-get update \
-    && apt-get install -y openjdk-22-jdk maven
+FROM maven:3.9.1-openjdk-22 AS build
 
 COPY . /app
 WORKDIR /app
