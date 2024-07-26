@@ -15,7 +15,6 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import api.tarefas.service.TokenService;
-import ch.qos.logback.core.subst.Token;
 
 @Configuration
 @EnableWebSecurity
@@ -29,11 +28,10 @@ public class SecurityConfig{
     
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
-
         http
             .csrf(csrf -> csrf.disable())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))    
-                .authorizeHttpRequests((request) -> request
+                .authorizeHttpRequests(request -> request
                 .requestMatchers("/auth/login").permitAll()
                 .requestMatchers("/auth/register").permitAll()
                 .anyRequest().authenticated()
