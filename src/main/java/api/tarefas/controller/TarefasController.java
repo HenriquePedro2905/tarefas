@@ -45,7 +45,7 @@ public class TarefasController {
 
     @GetMapping("/listByCompleted/{userId}")
     public ResponseEntity listTasksByCompleted(@PathVariable Integer userId){
-        var taskByCompleted = service.listarByCompletd();
+        var taskByCompleted = service.listarByCompletd(userId);
         return ResponseEntity.ok(taskByCompleted);
     }
 
@@ -73,9 +73,9 @@ public class TarefasController {
         return ResponseEntity.ok().build();
     }
 
-    @DeleteMapping("/deleteCompleted")
-    public ResponseEntity deleteByCompleted(@RequestBody TarefasReqDTO data){
-        service.deleteCompletedTask();
+    @DeleteMapping("/deleteCompleted/{userId}")
+    public ResponseEntity deleteByCompleted(@PathVariable Integer userId){
+        service.deleteCompletedTask(userId);
         return ResponseEntity.ok().build();
     }
         

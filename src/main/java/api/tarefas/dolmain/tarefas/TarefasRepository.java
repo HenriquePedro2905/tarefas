@@ -19,8 +19,8 @@ public interface TarefasRepository extends JpaRepository<Tarefas, Long>{
            "END")
     List<Tarefas> findAllOrderByPriority(@Param("userId") Integer userId);
 
-    @Query("SELECT t FROM Tarefas t WHERE t.status = true")
-    List<Tarefas> findByCompleted();
+    @Query("SELECT t FROM Tarefas t WHERE t.status = true AND t.userId = :userId")
+    List<Tarefas> findByCompleted(@Param("userId") Integer userId);
 
     List<Tarefas> findByUserId(Integer UsersId);
 }

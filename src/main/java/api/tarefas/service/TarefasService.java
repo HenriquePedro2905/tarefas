@@ -32,8 +32,8 @@ public class TarefasService {
         return repository.findByUserId(usersId);
     }
 
-    public List<Tarefas> listarByCompletd(){
-        return repository.findByCompleted();
+    public List<Tarefas> listarByCompletd(Integer userId){
+        return repository.findByCompleted(userId);
     }
     
     public Optional<Tarefas> listarById(Long id){
@@ -82,8 +82,8 @@ public class TarefasService {
         repository.delete(taskDelete);
     }
 
-    public void deleteCompletedTask(){
-        List<Tarefas> tarefa = new ArrayList<>(listarByCompletd());
+    public void deleteCompletedTask(Integer userId){
+        List<Tarefas> tarefa = new ArrayList<>(listarByCompletd(userId));
         for(Tarefas tarefas : tarefa){
             repository.deleteById(tarefas.getId());
         }
