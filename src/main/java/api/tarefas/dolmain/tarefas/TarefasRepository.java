@@ -7,7 +7,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import api.tarefas.dolmain.users.Users;
 
 public interface TarefasRepository extends JpaRepository<Tarefas, Long>{
 
@@ -19,7 +18,7 @@ public interface TarefasRepository extends JpaRepository<Tarefas, Long>{
            "END")
     List<Tarefas> findAllOrderByPriority(@Param("userId") Integer userId);
 
-    @Query("SELECT t FROM Tarefas t WHERE t.status = true AND t.userId = :userId")
+    @Query("SELECT t FROM Tarefas t WHERE t.status = true AND t.userId")
     List<Tarefas> findByCompleted(@Param("userId") Integer userId);
 
     List<Tarefas> findByUserId(Integer UsersId);
